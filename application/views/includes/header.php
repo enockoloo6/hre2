@@ -11,14 +11,14 @@ require_once("top_includes.php");
 
         <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
-                            <!-- <img alt="image" class="img image" src="<?php //echo(base_url()); ?>assets/img/a1.jpg" /> -->
-                            <img alt="image" class="img-circle" src="<?php echo(base_url()); ?>assets/img/a1.jpg" />
+                            <img alt="image" class="img-circle" src="<?php echo(base_url().$this->session->userdata('photo')); ?>" />
+                            <!-- <img alt="image" class="img-circle" src="<?php //echo(base_url()); ?>assets/img/a1.jpg" /> -->
 
                              </span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <span class="clear"> 
                             <span class="text-muted text-xs block">Logged in as: </span>
-                            <span class="block m-t-xs"> <strong class="font-bold"><?php //echo($this->session->userdata('names')); ?>David Williams</strong></span>
+                            <span class="block m-t-xs"> <strong class="font-bold"><?php echo($this->session->userdata('f_name')); ?></strong></span>
                             </span> </a>
                     </div>
                     <div class="logo-element">
@@ -187,7 +187,7 @@ require_once("top_includes.php");
 
 
                 <li>
-                        <a href="<?php echo base_url(); ?>login/logout">
+                        <a href="<?php echo base_url(); ?>index.php/login/logout">
                         <i class="fa fa-sign-out"></i> Log out
                     </a>
                 </li>

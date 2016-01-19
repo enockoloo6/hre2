@@ -102,7 +102,7 @@
                                                     <form action="<?= base_url();?>index.php/register/post_profile_photo" method="post" enctype="multipart/form-data" autocomplete="on">
                                                     <div class="modal-body">                                                    
                                                             <div class="form-group"><label>User id</label> <input type="text" name="user_id" placeholder="user id" class="form-control"></div>
-                                                            <div class="form-group"><label></label> <input type="file" name="userphoto[]" placeholder="Location choice" class="form-contro" value=""></div>
+                                                            <div class="form-group"><label></label> <input type="file" name="userfile[]" placeholder="Location choice" class="form-contro" value=""></div>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>

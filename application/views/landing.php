@@ -76,9 +76,9 @@
 
                                                     
 
-                                                    <form action="<?= base_url();?>index.php/post_new_house" method="post" enctype="multipart/form-data">
-                                                        <div class="form-group"><label>Email</label> <input type="email" name="" placeholder="Enter email" class="form-control"></div>
-                                                        <div class="form-group"><label>Password</label> <input type="password" name="" placeholder="Password" class="form-control"></div>
+                                                    <form action="<?= base_url();?>index.php/login/validate" method="post" enctype="multipart/form-data">
+                                                        <div class="form-group"><label>Email</label> <input type="email" autofill="on" name="email" placeholder="Email" class="form-control"></div>
+                                                        <div class="form-group"><label>Password</label> <input type="password" name="password" placeholder="Password" class="form-control"></div>
                                                         <div>
                                                             <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
                                                             <label> <input type="checkbox" class="i-checks"> Remember me </label>
@@ -114,8 +114,8 @@
                                                     
 
                                                     <form action="<?= base_url();?>index.php/post_new_house" method="post" enctype="multipart/form-data">
-                                                        <div class="form-group"><label>Email</label> <input type="email" name="" placeholder="Enter email" class="form-control"></div>
-                                                        <div class="form-group"><label>Password</label> <input type="password" name="" placeholder="Password" class="form-control"></div>
+                                                        <div class="form-group"><label>Email</label> <input type="email" name="email" placeholder="Enter email" class="form-control"></div>
+                                                        <div class="form-group"><label>Password</label> <input type="password" name="password" placeholder="Password" class="form-control"></div>
                                                         <div>
                                                             <button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
                                                             <label> <input type="checkbox" class="i-checks"> Remember me </label>

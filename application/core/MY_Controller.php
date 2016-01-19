@@ -140,7 +140,7 @@ class MY_Controller extends CI_Controller {
     {
         if (!is_logged_in()  )
         {
-            redirect(base_url().'login');
+            redirect(base_url());
         }
     }
     public function _set_active_tab($tab_name,$child_index){

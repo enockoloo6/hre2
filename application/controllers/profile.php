@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class profile extends CI_Controller {
+class profile extends MY_Controller {
+
+    private $data;
+    protected $before_filter = array(
+        'action' => '_check_if_logged_in',
+        'except' => array()
+    );
 
 	
 	    function __construct()
@@ -29,6 +35,7 @@ class profile extends CI_Controller {
         $this->load->view('profile',$data);
 
     }
+    
 
     function update_house_details() {
 
@@ -79,6 +86,7 @@ class profile extends CI_Controller {
             'road' => $road,
             'price' => $price_range,
             'photo1' => $full_image_name,
+            'owner' => $this->session->userdata('user_id'),
 
         );
 
@@ -108,6 +116,8 @@ class profile extends CI_Controller {
             'rfacility' => $rfacility,
             'road' => $road,
             'price' => $price_range,
+            'owner' => $this->session->userdata('user_id'),
+
 
         );
 
@@ -156,6 +166,8 @@ function post_new_house(){
             'road' => $road,
             'price' => $price_range,
             'photo1' => $full_image_name,
+            'owner' => $this->session->userdata('user_id'),
+
 
         );
 

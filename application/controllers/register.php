@@ -126,13 +126,13 @@ class Register extends CI_Controller {
 function post_profile_photo(){
  
     $files = $_FILES;
-    $cpt = count($_FILES['userphoto']['name']);
+    $cpt = count($_FILES['userfile']['name']);
     for($i=0; $i<$cpt; $i++){
-        $_FILES['userphoto']['name']     = $files['userphoto']['name'][$i];
-        $_FILES['userphoto']['type']     = $files['userphoto']['type'][$i];
-        $_FILES['userphoto']['tmp_name'] = $files['userphoto']['tmp_name'][$i];
-        $_FILES['userphoto']['error']    = $files['userphoto']['error'][$i];
-        $_FILES['userphoto']['size']     = $files['userphoto']['size'][$i]; 
+        $_FILES['userfile']['name']     = $files['userfile']['name'][$i];
+        $_FILES['userfile']['type']     = $files['userfile']['type'][$i];
+        $_FILES['userfile']['tmp_name'] = $files['userfile']['tmp_name'][$i];
+        $_FILES['userfile']['error']    = $files['userfile']['error'][$i];
+        $_FILES['userfile']['size']     = $files['userfile']['size'][$i]; 
 
         $this->load->helper("URL", "DATE", "URI", "FORM");
         $this->load->library('form_validation');
@@ -144,7 +144,10 @@ function post_profile_photo(){
         $final_images = $this->upload->do_upload();
 
         $upload_data    = $this->upload->data();
-            $file_name  =   $upload_data['file_name'];
+            $file_name  =   $upload_data['file_name'];                        
+            $file_type  =   $upload_data['file_type'];
+            $file_size  =   $upload_data['file_size'];
+            $file_path  =   $upload_data['file_path'];
 
             $myownpath = 'assets/img2/';
             $full_image_name = $myownpath.$file_name;

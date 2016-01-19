@@ -98,10 +98,13 @@ class profile extends MY_Controller {
 
 
     function delete_house_details($id){
+
+
         $this->db->where('house_id', $id);
         $this->db->delete('house_details');
 
-        redirect(base_url().'index.php/profile');
+        $this->session->set_flashdata('message', 'House '.$id.' was deleted');
+        redirect(base_url().'index.php/profile', 'refresh');
     }
     public function post_new_houses(){
         $location= ($this->input->post('house_location'));

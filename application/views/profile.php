@@ -109,10 +109,22 @@
                                                         <button type="submit" class="btn btn-primary">Upload</button>
                                                     </div>
                                                     </form>
+
+
                                                 </div>
                                             </div>
                                         </div>
                                 <!-- end of the modal form -->
+                                        <?php $message = "";?>
+                                        <?php $message = $this->session->flashdata('profilechanged'); ?>
+                                        <?php if($message != ""):?>
+                                          <script> $('#pModal').modal('show');</script>
+                                            <div class="ibox-content">
+                                            <div class="alert alert-success">
+                                             <?php echo $message;?>
+                                            </div>                           
+                                              </div>
+                                        <?php endif;?>
                                 </div>
 
 
@@ -211,6 +223,16 @@
                 <div>
                 <div class="chat-activity-list">
                     <h3 class="text-center"><strong>Houses Posted</strong></h3>
+    
+                                        <?php $message = $this->session->flashdata('message'); ?>
+                                        <?php if($message):?>
+                                          <script> $('#pModal').modal('show');</script>
+                                            <div class="ibox-content">
+                                            <div class="alert alert-success">
+                                             <?php echo $message;?>
+                                            </div>                           
+                                              </div>
+                                        <?php endif;?>
 
             <?php foreach ($HOUSE_DETAILS as $posted_houses): ?> 
 
@@ -220,7 +242,7 @@
                         </a>
                         <div class="media-body ">
                             <small class="pull-right text-navy">1m ago</small>
-                            <strong><?php echo $posted_houses->type; ?></strong>
+                            <strong><?php echo $posted_houses->type; ?></strong> <?php echo "  house ".$posted_houses->house_id; ?>
                             <p class="m-b-xs">
 
                                 <?php echo $posted_houses->location; ?>

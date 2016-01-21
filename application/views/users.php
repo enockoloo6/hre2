@@ -4,14 +4,7 @@
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-sm-4">
             <h2>Manage users</h2>
-            <!--<ol class="breadcrumb">
-                <li>
-                    <a href="index.html">This is</a>
-                </li>
-                <li class="active">
-                    <strong>Breadcrumb</strong>
-                </li>
-            </ol>-->
+
         </div>
         <div class="col-sm-8">
             <div class="title-action">
@@ -171,10 +164,6 @@
                         <!--<div class="form-group">
                                 <div class="checkbox i-checks"><label> <input type="checkbox"><i></i> Agree the terms and policy </label></div>
                         </div>-->
-<!--                        <input type="submit" class="btn btn-primary block full-width m-b" value="Create User" >
--->
-                        <!--<p class="text-muted text-center"><small>Already have an account?</small></p>
-                        <a class="btn btn-sm btn-white btn-block" href="login.html">Login</a>-->
 
 
                 </div>
@@ -188,4 +177,5 @@
             </div>
         </div>
     </div>
+</div>
 <?php require_once("includes/footer.php"); ?>

@@ -52,7 +52,9 @@ class Login extends CI_Controller
                 'is_logged_in' => true,
                 'role' => $role,
                 'f_name' => $f_name,
-                'photo' => $photo                
+                'photo' => $photo,  
+                'other_names'=>$other_names
+
             );
             $this->session->set_userdata($data);
 

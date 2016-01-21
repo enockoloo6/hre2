@@ -15,7 +15,7 @@
     </div>
 <div class="col-sm-8"> 
 <div class="title-action">
-    <a href="#" class="btn btn-primary">View or update your profile</a>
+    <a href="#" class="btn btn-primary">Post new or update existing houses</a>
 </div>
 </div>
 </div>
@@ -75,15 +75,24 @@
             </div>
 
         <div class="col-lg-4">
-         <div>
             <div class="row">
-                       <div>
+                       
                             <div class="ibox-content text-center">
-                                <h3>Profile picture</h3>
+                                <h3></h3>
                                 <div class="m-b-sm">
-                                    <img alt="Profile photo" class="img-circle" src="<?php echo(base_url()); ?>assets/img/a8.jpg">
+
+
+                                            <?php if($this->session->userdata('user_id'))
+                                            { ?>
+                                                <?php foreach ($USER_DETAILS as $userdetails): ?>                                                    
+                                               <img alt="Profile photo" class="img-circle" src="<?php echo(base_url()).$userdetails->photo; ?>">
+                                    
                                 </div>
-                                    <p class="font-bold">Consectetur adipisicing</p>
+                                    <p class="font-bold"><?php echo $userdetails->f_name." ".$userdetails->other_names; ?></p>
+
+                                             <?php endforeach; ?>
+
+                                             <?php }?>
 
                                 <div class="text-center">
                                     <a class="btn btn-xs btn-default" data-toggle="modal" data-target="#pModal"><i class="fa fa-edit"></i> Edit </a>
@@ -100,8 +109,8 @@
                                                     </div>
 
                                                     <form action="<?= base_url();?>index.php/register/post_profile_photo" method="post" enctype="multipart/form-data" autocomplete="on">
-                                                    <div class="modal-body">                                                    
-                                                            <div class="form-group"><label>User id</label> <input type="text" name="user_id" placeholder="user id" class="form-control"></div>
+                                                    <div class="modal-body">                                                  
+                                                            
                                                             <div class="form-group"><label></label> <input type="file" name="userfile[]" placeholder="Location choice" class="form-contro" value=""></div>
                                                     </div>
                                                     <div class="modal-footer">
@@ -115,9 +124,8 @@
                                             </div>
                                         </div>
                                 <!-- end of the modal form -->
-                                        <?php $message = "";?>
                                         <?php $message = $this->session->flashdata('profilechanged'); ?>
-                                        <?php if($message != ""):?>
+                                        <?php if($message):?>
                                           <script> $('#pModal').modal('show');</script>
                                             <div class="ibox-content">
                                             <div class="alert alert-success">
@@ -131,87 +139,52 @@
 
 
                             </div>
-                        </div>
+                    
 
-
-                        <div>
-                            <div class="ibox-content">
+                        
+                            <div class="ibox-content text-center">
                                 <div>
                                  <div class="widget lazur-bg p-xl">
 
                                     <h3>
                                         Contacts
                                     </h3>
+
+                                <?php if($this->session->userdata('user_id'))
+                                { ?>
+                                <?php foreach ($USER_DETAILS as $userdetails): ?>                                                    
+                                 
                                     <ul class="list-unstyled m-t-md">
                                         <li>
                                             <span class="fa fa-envelope m-r-xs"></span>
                                             <label>Email:</label>
-                                            mike@mail.com
+                                            <?php echo $userdetails->email; ?>                                            
                                         </li>
                                         <li>
                                             <span class="fa fa-home m-r-xs"></span>
-                                            <label>Address:</label>
-                                            Street 200, Avenue 10
+                                            <label>ID:</label>
+                                            <?php echo $userdetails->national_id; ?>                                            
+                                            
                                         </li>
                                         <li>
                                             <span class="fa fa-phone m-r-xs"></span>
                                             <label>Contact:</label>
-                                            (+121) 678 3462
+                                            <?php echo $userdetails->phone_number; ?>                                            
+                                            
                                         </li>
                                     </ul>
+                                <?php endforeach; ?>
+                                <?php }?>
 
                                 <div class="text-center">
-                                    <a class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit </a>
-                                    <a class="btn btn-xs btn-warning"><i class="fa fa-trash"></i></a>
+                                    <a class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit </a>                                   
                                 </div>
 
                                  </div>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div>
-                            <div class="ibox-content text-center">
-                                <div>
-                                 <div class="">
-
-                                    <h3>
-                                        others
-                                    </h3>
-                                    <ul class="list-unstyled m-t-md">
-                                        <li>
-                                            <span class="fa fa-envelope m-r-xs"></span>
-                                            <label>Email:</label>
-                                            mike@mail.com
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-home m-r-xs"></span>
-                                            <label>Address:</label>
-                                            Street 200, Avenue 10
-                                        </li>
-                                        <li>
-                                            <span class="fa fa-phone m-r-xs"></span>
-                                            <label>Contact:</label>
-                                            (+121) 678 3462
-                                        </li>
-                                    </ul>
-
-                                <div class="text-center">
-                                    <a class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit </a>
-                                    <a class="btn btn-xs btn-warning"><i class="fa fa-trash"></i></a>
-                                </div>
-
-                                 </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
+        
                     </div>
-                </div>
         </div>
 
 
@@ -289,7 +262,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-primary">Update changes</button>
+                                                        <button id="update" type="submit" class="btn btn-primary">Update changes</button>
                                                     </div>
                                                     </form>
                                                 </div>
@@ -303,58 +276,11 @@
 
         <?php endforeach; ?>
 
-
-                    <div class="chat-element">
-                        <a href="#" class="pull-left">
-                            <img alt="image" class="img-circle" src="<?php echo(base_url()); ?>assets/img/a4.jpg">
-                        </a>
-                        <div class="media-body">
-                            <small class="pull-right">5m ago</small>
-                            <strong>John Smith</strong>
-                            <p class="m-b-xs">
-                                Lorem Ipsum is simply dummy text of the printing.
-                            </p>
-                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-
-                            <div class="text-right">
-                                    <a class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit </a>         
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chat-element ">
-                        <a href="#" class="pull-left">
-                            <img alt="image" class="img-circle" src="<?php echo(base_url()); ?>assets/img/a2.jpg">
-                        </a>
-                        <div class="media-body ">
-                            <small class="pull-right">2h ago</small>
-                            <strong>Mike Smith</strong>
-                            <p class="m-b-xs">
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-                            </p>
-                            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
-
-                            <div class="text-right">
-                                    <a class="btn btn-xs btn-default"><i class="fa fa-edit"></i> Edit </a>         
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 </div>
                         <div class="chat-form">
 
-                            <!--    <div class="text-center">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                        Launch demo modal
-                                    </button>
-                                    </div>
-                            -->
-
                             <form role="form">
-
-                                <div class="text-left">
-                                    <button type="button" class="btn btn-sm btn-default m-t-n-xs" data-toggle="modal" data-target="#myModal"><strong>See all</strong></button>
-                                </div>
 
                                 <div class="text-right">
                                     <button type="button" class="btn btn-sm btn-primary m-t-n-xs" data-toggle="modal" data-target="#myModal"><strong>Add new house</strong></button>
@@ -392,7 +318,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="submit" class="btn btn-primary">Save</button>
+                                            <button id="submit" type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                         </form>
                                     </div>

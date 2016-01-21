@@ -18,53 +18,6 @@
 <!-- Custom msh javascript -->
 <script src="<?php echo(base_url()); ?>assets/js/mshcustom/validateUserActions.js"></script>
 
-
-<script>
-    $(document).ready(function () {
-       /* $('.dataTables-example').dataTable({
-            responsive: true,
-            "dom": 'T<"clear">lfrtip',
-            "tableTools": {
-                "sSwfPath": "js/plugins/dataTables/swf/copy_csv_xls_pdf.swf"
-            }
-        });
-
-        *//* Init DataTables *//*
-        var oTable = $('#editable').dataTable();
-
-        *//* Apply the jEditable handlers to the table *//*
-        oTable.$('td').editable('../example_ajax.php', {
-            "callback": function (sValue, y) {
-                var aPos = oTable.fnGetPosition(this);
-                oTable.fnUpdate(sValue, aPos[0], aPos[1]);
-            },
-            "submitdata": function (value, settings) {
-                return {
-                    "row_id": this.parentNode.getAttribute('id'),
-                    "column": oTable.fnGetPosition(this)[2]
-                };
-            },
-
-            "width": "90%",
-            "height": "100%"
-        });
-*/
-
-    });
-
-    function fnClickAddRow() {
-        $('#editable').dataTable().fnAddData([
-            "Custom row",
-            "New row",
-            "New row",
-            "New row",
-            "New row" ]);
-
-    }
-</script>
-
-
-
 <!-- Mainly scripts -->
 
 
@@ -144,8 +97,27 @@
     <!-- Sparkline demo data  -->
     <script src="<?php echo(base_url()); ?>assets/js/demo/sparkline-demo.js"></script>
 
+        <!-- Toastr script -->
+    <script src="<?php echo(base_url()); ?>assets/js/plugins/toastr/toastr.min.js"></script>
+
     <!-- ChartJS-->
     <script src="<?php echo(base_url()); ?>assets/js/plugins/chartJs/Chart.min.js"></script>
+
+
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Housing recomendation engine', 'Welcome to HRE');
+
+            }, 1300);
+        });
+    </script>
 
 
      <script>
@@ -243,20 +215,8 @@
     <!-- js from the dashboard 4 -->
     <!-- js from the dashboard 4 -->
 
-
-
-
-
-
-
-
 <script>
 $(document).ready(function(){
-
-
-
-
-
 
 
     $('#data_1 .input-group.date').datepicker({
@@ -367,8 +327,6 @@ $("#ionrange_4").ionRangeSlider({
 });
 
 
-
-
 </script>
 
 <script src="<?php echo(base_url()); ?>assets/js/FileSaver.js"></script>
@@ -382,93 +340,7 @@ $("#ionrange_4").ionRangeSlider({
     });
 </script>
 
-
-
-    <script>
-        $(document).ready(function(){
-            $("#wizard").steps();
-            $("#form").steps({
-                bodyTag: "fieldset",
-                onStepChanging: function (event, currentIndex, newIndex)
-                {
-                    // Always allow going backward even if the current step contains invalid fields!
-                    if (currentIndex > newIndex)
-                    {
-                        return true;
-                    }
-
-                    // Forbid suppressing "Warning" step if the user is to young
-                    if (newIndex === 3 && Number($("#age").val()) < 18)
-                    {
-                        return false;
-                    }
-
-                    var form = $(this);
-
-                    // Clean up if user went backward before
-                    if (currentIndex < newIndex)
-                    {
-                        // To remove error styles
-                        $(".body:eq(" + newIndex + ") label.error", form).remove();
-                        $(".body:eq(" + newIndex + ") .error", form).removeClass("error");
-                    }
-
-                    // Disable validation on fields that are disabled or hidden.
-                    form.validate().settings.ignore = ":disabled,:hidden";
-
-                    // Start validation; Prevent going forward if false
-                    return form.valid();
-                },
-                onStepChanged: function (event, currentIndex, priorIndex)
-                {
-                    // Suppress (skip) "Warning" step if the user is old enough.
-                    if (currentIndex === 2 && Number($("#age").val()) >= 18)
-                    {
-                        $(this).steps("next");
-                    }
-
-                    // Suppress (skip) "Warning" step if the user is old enough and wants to the previous step.
-                    if (currentIndex === 2 && priorIndex === 3)
-                    {
-                        $(this).steps("previous");
-                    }
-                },
-                onFinishing: function (event, currentIndex)
-                {
-                    var form = $(this);
-
-                    // Disable validation on fields that are disabled.
-                    // At this point it's recommended to do an overall check (mean ignoring only disabled fields)
-                    form.validate().settings.ignore = ":disabled";
-
-                    // Start validation; Prevent form submission if false
-                    return form.valid();
-                },
-                onFinished: function (event, currentIndex)
-                {
-                    var form = $(this);
-
-                    // Submit form input
-                    form.submit();
-                }
-            }).validate({
-                        errorPlacement: function (error, element)
-                        {
-                            element.before(error);
-                        },
-                        rules: {
-                            confirm: {
-                                equalTo: "#password"
-                            }
-                        }
-                    });
-       });
-    </script>
-
-
-
-
-
+    
 </body>
 
 </html>

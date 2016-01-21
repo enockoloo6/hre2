@@ -11,6 +11,7 @@ require_once("top_includes.php");
 
         <li class="nav-header">
                     <div class="dropdown profile-element"> <span>
+
                             <img alt="image" class="img-circle" src="<?php echo(base_url().$this->session->userdata('photo')); ?>" />
                             <!-- <img alt="image" class="img-circle" src="<?php //echo(base_url()); ?>assets/img/a1.jpg" /> -->
 
@@ -20,6 +21,7 @@ require_once("top_includes.php");
                             <span class="text-muted text-xs block">Logged in as: </span>
                             <span class="block m-t-xs"> <strong class="font-bold"><?php echo($this->session->userdata('f_name')); ?></strong></span>
                             </span> </a>
+
                     </div>
                     <div class="logo-element">
                         HRE
@@ -81,12 +83,17 @@ require_once("top_includes.php");
                 <li>
                     <span class="m-r-sm text-muted welcome-message">Housing Recommendation Engine</span>
                 </li>
+
 <!-- notificaiton -->
 
+                <?php if($this->session->userdata('role')== -1 && $this->uri->segment(1)=='profile') { ?>
+                                            
+                <?php foreach ($USER_DETAILS as $userdetails): ?>                                                                    
+                            
 
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">1</span>
                     </a>
                     <ul class="dropdown-menu dropdown-messages">
                         <li>
@@ -96,37 +103,12 @@ require_once("top_includes.php");
                                 </a>
                                 <div class="media-body">
                                     <small class="pull-right">46h ago</small>
-                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <strong>Mike Loreipsum</strong> texted you. <br>
                                     <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
                                 </div>
                             </div>
                         </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/a4.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right text-navy">5h ago</small>
-                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
-                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="dropdown-messages-box">
-                                <a href="profile.html" class="pull-left">
-                                    <img alt="image" class="img-circle" src="img/profile.jpg">
-                                </a>
-                                <div class="media-body ">
-                                    <small class="pull-right">23h ago</small>
-                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
-                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
-                                </div>
-                            </div>
-                        </li>
+         
                         <li class="divider"></li>
                         <li>
                             <div class="text-center link-block">
@@ -139,49 +121,30 @@ require_once("top_includes.php");
                 </li>
                 <li class="dropdown">
                     <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">3</span>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
-                        <li>
-                            <a href="mailbox.html">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
+                        
                         <li>
                             <a href="profile.html">
                                 <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <i class="fa fa-twitter fa-thumbs-up"></i> 3 people liked your house
                                     <span class="pull-right text-muted small">12 minutes ago</span>
                                 </div>
                             </a>
                         </li>
+
                         <li class="divider"></li>
-                        <li>
-                            <a href="grid_options.html">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <div class="text-center link-block">
-                                <a href="notifications.html">
-                                    <strong>See All Alerts</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </div>
-                        </li>
+
                     </ul>
                 </li>
 
 
+                                    <!-- <p class="font-bold"><?php //echo $userdetails->f_name." ".$userdetails->other_names; ?></p> -->
 
+                <?php endforeach; ?>
+
+                <?php }?>
 
 <!-- end of the notification -->
 

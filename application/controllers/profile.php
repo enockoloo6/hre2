@@ -30,7 +30,10 @@ class profile extends MY_Controller {
     {
 
 
-        //$house_id = $this->uri->segment(3);//get id from the url
+        $user_id = $this->session->userdata('user_id');
+        $this->load->model('user_model');        
+
+        $data['USER_DETAILS'] = $this->user_model->get_user($user_id); 
         $data['HOUSE_DETAILS'] = $this->profile_model->show_all_houses();        
         $this->load->view('profile',$data);
 

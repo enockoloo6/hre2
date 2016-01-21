@@ -45,8 +45,8 @@ class Register extends CI_Controller {
         {
             $role=$is_valid[0]['role'];
             $user_id=$is_valid[0]['user_id'];
-            $f_name=$is_valid[0]['name'];
-            $other_names=$is_valid[0]['name'];
+            $f_name=$is_valid[0]['f_name'];
+            $other_names=$is_valid[0]['other_names'];
             //print_r($is_valid);
             $data = array(
                 'user_name' => $user_name,
@@ -54,6 +54,7 @@ class Register extends CI_Controller {
                 'is_logged_in' => true,
                 'role' => $role,
                 'f_name'=>$f_name,
+                'photo' => $photo,
                 'other_names'=>$other_names
             );
             $this->session->set_userdata($data);
@@ -94,9 +95,39 @@ class Register extends CI_Controller {
 
         if($this->user_model->new_user($f_name,$other_names,$phone_number,$national_id,$password,$email,$role))
         {
-            $data['flash_message']=TRUE;
-            //$this->load->view('register', $data);
-            redirect(base_url()."index.php/users");
+
+            $is_valid = $this->user_model->validate($email, $password);
+            if ($role == 1 && $is_valid) {                
+
+                        $role = $is_valid[0]['role'];
+                        $user_id = $is_valid[0]['user_id'];
+                        $f_name = $is_valid[0]['f_name'];
+                        $photo = $is_valid[0]['photo'];
+                        //print_r($is_valid);
+                        $data = array(
+                            'email' => $email,
+                            'user_id' => $user_id,
+                            'is_logged_in' => true,
+                            'role' => $role,
+                            'f_name' => $f_name,
+                            'photo' => $photo,  
+                            'other_names'=>$other_names
+
+                        );
+                        $this->session->set_userdata($data);
+
+                        redirect(base_url()."index.php/profile");
+                    
+            }
+
+
+            elseif ($role == 0) {
+                redirect(base_url()."index.php/housesearch");                
+            }
+
+            elseif ($role == -1) {
+                redirect(base_url()."index.php/users");                
+            }
         }
     }
     public function edit_user()
@@ -151,7 +182,7 @@ function post_profile_photo(){
 
             $myownpath = 'assets/img2/';
             $full_image_name = $myownpath.$file_name;
-            $uid=$this->input->post('user_id');
+            //$uid=$this->input->post('user_id');
 
 // post the photo name and other form fields to the database
         $ppicture = array(
@@ -159,6 +190,7 @@ function post_profile_photo(){
             'photo' => $full_image_name,
         );
 
+        $uid = $this->session->userdata('user_id');
         $photo = $this->user_model->add_a_photo_to_profile($uid,$ppicture);
         redirect(base_url().'index.php/profile'); 
     } 

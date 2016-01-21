@@ -66,15 +66,12 @@
                                     <div class="modal-content animated flip">
                                             <div class="modal-header text-center">
                                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                            <i class="fa fa-institution modal-icon" id="hrebig-icon"></i>                                           
+                                            <i class="fa fa-institution modal-icon" id="hrebig-icon"></i>                      
                                         </div>
-
 
                                         <div class="modal-body">
                                             <div class="row">
-                                                <div class="col-sm-7 b-r"><h3 class="m-t-none m-b">Sign in</h3>
-
-                                                    
+                                                <div class="col-sm-7 b-r"><h3 class="m-t-none m-b">Sign in</h3>                                                    
 
                                                     <form action="<?= base_url();?>index.php/login/validate" method="post" enctype="multipart/form-data">
                                                         <div class="form-group"><label>Email</label> <input type="email" autofill="on" name="email" placeholder="Email" class="form-control"></div>
@@ -154,6 +151,7 @@
                                                 <div class="form-group"><label>Email</label> <input type="email" name="" placeholder="Enter your email" class="form-control"></div>
                                                 <div class="form-group"><label>Password</label> <input type="password" name="" placeholder="Enter your email" class="form-control"></div>
                                                 <div class="form-group"><label>Confirm password</label> <input type="password" name="" placeholder="Enter your email" class="form-control"></div>
+                                                <div class="form-group hide"><input name="role" type="tel" class="form-control" value"0"></div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
@@ -178,20 +176,42 @@
                                             <h4 class="modal-title">Sign up details</h4>
                                         </div>
 
-                                        <form action="<?= base_url();?>index.php/post_new_house" method="post" enctype="multipart/form-data">
-                                        <div class="modal-body">
-                                                <div class="form-group"><label>First name</label> <input type="text" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Other name</label> <input type="text" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Email</label> <input type="email" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Phone number</label> <input type="email" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>ID number</label> <input type="email" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Nationality</label> <input type="email" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Password</label> <input type="password" name="" placeholder="Enter your email" class="form-control"></div>
-                                                <div class="form-group"><label>Confirm password</label> <input type="password" name="" placeholder="Enter your email" class="form-control"></div>                                                
-                                        </div>
+                                        <form action="<?= base_url();?>index.php/register/create_user" method="post" enctype="multipart/form-data">
+                                           <div class="modal-body">
+                                                    <form autocomplete="off" style="color: black;" class="m-t" method="post" role="form" action="<?php echo(base_url()); ?>index.php/register/create_user">
+                                                        <div class="form-group"><label>First name</label>
+                                                            <input name="f_name" type="text" class="form-control" placeholder="First name" required="">
+                                                        </div>
+                                                        <div class="form-group"><label>Other names</label>
+                                                            <input name="other_names" type="text" class="form-control" placeholder="Other names">
+                                                        </div>
+                                                        <div class="form-group"><label>Email</label>
+                                                            <input name="email" type="email" class="form-control" placeholder="Email" required="">
+                                                        </div>
+                                                        <div class="form-group"><label>Password</label>
+                                                            <input name="password" type="password" class="form-control" placeholder="Password" required="">
+                                                        </div>
+                                                        <div class="form-group"><label>Repeat password</label>
+                                                            <input name="password" type="password" class="form-control" placeholder="Password">
+                                                        </div>
+                                                        <div class="form-group"><label>ID number</label>
+                                                            <input name="national_id" type="number" class="form-control" placeholder="National ID number">
+                                                        </div>
+
+                                                        <div class="form-group"><label>Phone number</label>
+                                                            <input name="phone_number" type="tel" class="form-control" placeholder="Phone Number">
+                                                        </div>
+
+                                                        <div class="form-group hide">
+                                                            <input name="role" type="tel" class="form-control" value="1">
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <div class="checkbox i-checks"><label> <input type="checkbox" required=""><i></i> Agree the terms and policy </label></div>
+                                                        </div>
+                                                </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Submit</button>
+                                            <button id="submit" type="submit" class="btn btn-primary">Submit</button>
                                         </div>
                                         </form>
                                     </div>

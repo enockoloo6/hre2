@@ -15,9 +15,9 @@
         </div>
         <div class="col-sm-8">
             <div class="title-action">
-                <a href="" class="btn btn-primary">Use google maps to find suggestions</a>
+                <a href="" class="btn btn-primary">Search for locations using google map</a>
 
-                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#housesearchModal">Find a house recommendation here</a>
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target="#housesearchModal">Search for a house</a>
             </div>
         </div>
     </div>
@@ -32,6 +32,8 @@
                                             <i class="fa fa-institution modal-icon"></i>
                                             <h4 class="modal-title">House details</h4>
                                             <small class="font-bold">Fill in the details of the house you need and we can help you find it.</small>
+                                            <h3 class="font-bold">Leave blank if not applicable.</h3>
+
                                         </div>
 
                                         <form action="<?= base_url();?>index.php/post_new_house" method="post" enctype="multipart/form-data">

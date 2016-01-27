@@ -250,8 +250,6 @@
 
                                                             <div class="form-group"><label>Photo1</label> <input type="file" name="userfile[]" placeholder="captured image of the house" class="form-control" value="<?php echo $posted_houses->photo1; ?>"></div>
 
-                                                            <div class="form-group"><label>Photo2</label> <input type="file" name="photo2" placeholder="captured image of the house" class="form-control" value="<?php echo $posted_houses->photo2; ?>"></div>
-
                                                             <div class="form-group"><label>Recreational facility</label> <input type="text" name="rfacility" placeholder="Any recreational facility you wish to find within or around" class="form-control" value="<?php echo $posted_houses->rfacility; ?>"></div>
 
                                                             <div class="form-group"><label>main road</label> <input type="text" name="road" placeholder="street/avenue along which you wish to find a home" class="form-control" value="<?php echo $posted_houses->road; ?>"></div>
@@ -304,11 +302,11 @@
 
                                                 <div class="form-group"><label>type of house</label> <input type="text" name="house_type" placeholder="house type" class="form-control"></div>
 
-                                                <div class="form-group"><label>Photo1</label> <input type="file" name="userfile[]" placeholder="captured image of the house" class="form-control"></div>
+                                                <div class="form-group"><label>House image</label> <input type="file" name="userfile[]" placeholder="captured image of the house" class="form-control"></div>
 
-                                                <div class="form-group"><label>Photo2</label> <input type="file" name="userfile[]" placeholder="captured image of the house" class="form-control"></div>
+                                                <div class="form-group hide"><label>Photo2</label> <input type="file" name="userfile[]" placeholder="captured image of the house" class="form-control"></div>
 
-                                                <div class="form-group"><label>Recreational facility</label> <input type="text" name="rfacility" placeholder="Any recreational facility you wish to find within or around" class="form-control"></div>
+                                                <div class="form-group hide"><label>Recreational facility</label> <input type="text" name="rfacility" placeholder="Any recreational facility you wish to find within or around" class="form-control"></div>
 
                                                 <div class="form-group"><label>main road</label> <input type="text" name="road" placeholder="street/avenue along which you wish to find a home" class="form-control"></div>
 
